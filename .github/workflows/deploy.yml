@@ -41,6 +41,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -48,3 +49,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # First-ever Pages provisioning can exceed the 10-min default and abort.
+          # Give it room so the deploy doesn't time out before the site goes live.
+          timeout: 1800000
+          error_count: 20
