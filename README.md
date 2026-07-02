@@ -45,6 +45,16 @@ so links and assets are correct whether the site is served at the domain root or
 under a `/<repo>/` project path. Override with the `SITE_URL` / `BASE_PATH` env
 vars (e.g. when you point a custom domain at it).
 
+## Deploy (Netlify / Vercel — no setup)
+
+Prefer a one-click host? Both are pre-configured and serve at the site root:
+
+- **Netlify** — `netlify.toml` sets build = `npm run build`, publish = `dist`.
+  Connect the repo in the Netlify dashboard, or run `npm run build` and drag the
+  `dist/` folder onto Netlify's "deploy manually" drop zone.
+- **Vercel** — `vercel.json` declares the Astro framework preset. Import the repo
+  in Vercel (or `vercel` from the CLI); zero further config.
+
 ## Notes / not yet wired
 
 The forms (Subscribe, Contact, footer signups) and the header search box are

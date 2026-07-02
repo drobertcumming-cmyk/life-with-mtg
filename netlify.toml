@@ -1,0 +1,10 @@
+# Netlify config. Connect the repo (or drag the built `dist/` folder into the
+# Netlify dashboard) and it deploys with no further setup. Served at the site
+# root, so astro.config.mjs uses base "/" automatically (GITHUB_REPOSITORY is
+# unset here).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
