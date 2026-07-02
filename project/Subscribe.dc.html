@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ---------- RESPONSIVE (tablet + mobile) ---------- */
+  @media (max-width: 1024px) {
+    [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="grid-template-columns: 1fr 360px"] { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns: 1fr 1.35fr"] { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns: 400px 1fr"] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 768px) {
+    header > div { flex-wrap: wrap !important; row-gap: 16px !important; }
+    header nav { flex-wrap: wrap !important; justify-content: flex-start !important; column-gap: 20px !important; row-gap: 12px !important; }
+    header nav label { display: none !important; }
+    section[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+    [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="1fr 1fr 1.15fr"] { grid-template-columns: 1fr !important; gap: 40px !important; }
+    [style*="font-size: 62px"], [style*="font-size: 60px"], [style*="font-size: 58px"], [style*="font-size: 56px"], [style*="font-size: 54px"] { font-size: 40px !important; line-height: 1.08 !important; }
+    header > div, main, footer > div { padding-left: 22px !important; padding-right: 22px !important; }
+    [style*="float: left"] { display: none !important; }
+  }
+  @media (max-width: 480px) {
+    [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }
+    [style*="font-size: 62px"], [style*="font-size: 60px"], [style*="font-size: 58px"], [style*="font-size: 56px"], [style*="font-size: 54px"] { font-size: 33px !important; }
+    [style*="font-size: 46px"] { font-size: 34px !important; }
+  }
+</style>
+<script src="./blogData.js"></script>
+</helmet>
+
+<div style="font-family:'Libre Franklin',system-ui,sans-serif; background:#f1ead9; color:#2b2a24; min-height:100vh; -webkit-font-smoothing:antialiased;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="background:#16243f; width:100%;">
+    <div style="max-width:1200px; margin:0 auto; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
+      <a href="Life%20with%20MTG.dc.html" style="display:flex; align-items:center; gap:14px;">
+        <span style="position:relative; width:46px; height:46px; border-radius:11px; overflow:hidden; box-shadow:inset 0 0 0 1.5px rgba(246,239,223,0.55); flex:none;">
+          <span style="position:absolute; inset:0; background:repeating-linear-gradient(180deg, #b41f2c 0, #b41f2c 16.666%, #faf5ea 16.666%, #faf5ea 33.333%);"></span>
+          <span style="position:absolute; top:0; left:0; width:60%; height:58%; background:#16243f; display:flex; align-items:center; justify-content:center;">
+            <span style="width:15px; height:15px; background:#faf5ea; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);"></span>
+          </span>
+        </span>
+        <span style="display:flex; flex-direction:column; line-height:1;">
+          <span style="font-family:'Libre Franklin',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#a9b3c6; margin-bottom:4px;">Life with</span>
+          <span style="font-family:'Newsreader',serif; font-weight:700; font-size:30px; color:#f6efdf; letter-spacing:0.5px;">MTG</span>
+        </span>
+      </a>
+      <nav style="display:flex; align-items:center; gap:30px;">
+        <a href="Life%20with%20MTG.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Home</a>
+        <a href="About%20Me.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">About Me</a>
+        <a href="Categories.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Categories</a>
+        <a href="Media.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Media</a>
+        <a href="Contact%20Us.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Contact Us</a>
+        <label style="display:flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); border-radius:8px; padding:9px 16px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8391a8" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+          <input type="text" placeholder="Search" style="background:transparent; border:none; outline:none; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#c8cedd; width:96px;">
+        </label>
+        <a href="Subscribe.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:11px 24px; border-radius:8px;">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main style="max-width:1200px; margin:0 auto; padding:70px 40px 72px;">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start;">
+      <!-- left copy -->
+      <div>
+        <p style="margin:0 0 16px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#b41f2c;">Stay Connected</p>
+        <h1 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:62px; line-height:1.03; color:#16243f; letter-spacing:-0.015em;">Get it straight to your inbox</h1>
+        <p style="margin:26px 0 0; font-size:20px; line-height:1.6; color:#514c40; max-width:540px;">Join MTG's list for new posts, her take on what's actually moving — politics, your money, your health, faith — and the occasional note you won't find anywhere else. <span style="font-style:italic; color:#8a8172;">[Final blurb is your copy.]</span></p>
+
+        <ul style="list-style:none; margin:34px 0 0; padding:0; display:flex; flex-direction:column; gap:18px;">
+          <li style="display:flex; align-items:center; gap:14px;">
+            <span style="width:22px; height:22px; border:2px solid #b41f2c; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#b41f2c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"></path></svg></span>
+            <span style="font-family:'Libre Franklin',sans-serif; font-size:18px; color:#33322b;">New posts the moment they publish</span>
+          </li>
+          <li style="display:flex; align-items:center; gap:14px;">
+            <span style="width:22px; height:22px; border:2px solid #b41f2c; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#b41f2c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"></path></svg></span>
+            <span style="font-family:'Libre Franklin',sans-serif; font-size:18px; color:#33322b;">Her voice, unfiltered — no handlers</span>
+          </li>
+          <li style="display:flex; align-items:center; gap:14px;">
+            <span style="width:22px; height:22px; border:2px solid #b41f2c; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#b41f2c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 6"></path></svg></span>
+            <span style="font-family:'Libre Franklin',sans-serif; font-size:18px; color:#33322b;">No spam. Unsubscribe anytime.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- right form card -->
+      <div style="background:#16243f; border-radius:18px; padding:44px 44px 40px;">
+        <h2 style="margin:0 0 28px; font-family:'Newsreader',serif; font-weight:600; font-size:34px; color:#f6efdf;">Sign up free</h2>
+        <input type="text" placeholder="First Name" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:10px; padding:18px 22px; margin-bottom:16px;">
+        <input type="email" placeholder="Email address" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:10px; padding:18px 22px; margin-bottom:16px;">
+        <button type="button" style="width:100%; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:700; color:#fdf6ea; background:#b41f2c; border:none; border-radius:10px; padding:19px 20px; cursor:pointer;">Sign Up</button>
+        <p style="margin:22px 0 0; text-align:center; font-family:'Libre Franklin',sans-serif; font-size:15px; line-height:1.5; color:#8391a8;">We respect your privacy. Read our <a href="#" style="color:#c8cedd; text-decoration:underline;">Privacy Policy</a>.</p>
+      </div>
+    </div>
+
+    <!-- WHILE YOU'RE HERE -->
+    <div style="margin-top:64px; padding-top:44px; border-top:1px solid rgba(43,42,36,0.16);">
+      <p style="margin:0 0 26px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8a8172;">While you're here — Recent Posts</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px;">
+        <sc-for list="{{ recentPosts }}" as="post" hint-placeholder-count="0">
+          <a href="{{ post.href }}" style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+            <img data-imgsrc="{{ post.image }}" alt="" style="display:block; width:100%; height:170px; object-fit:cover; object-position:center 30%;">
+            <div style="padding:20px 24px 26px;">
+              <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">{{ post.tag }}</p>
+              <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:22px; line-height:1.22; color:#16243f;">{{ post.title }}</h3>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#16243f;">
+    <div style="max-width:1200px; margin:0 auto; padding:64px 40px 40px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1.15fr; gap:72px;">
+        <div>
+          <h4 style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8391a8;">Navigate</h4>
+          <a href="Life%20with%20MTG.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Home</a>
+          <a href="About%20Me.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">About Me</a>
+          <a href="Categories.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Categories</a>
+          <a href="Media.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Media</a>
+          <a href="Contact%20Us.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0;">Contact Us</a>
+        </div>
+        <div>
+          <h4 style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8391a8;">Categories</h4>
+          <a href="Category.dc.html?cat=politics-power" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Politics &amp; Power</a>
+          <a href="Category.dc.html?cat=money-economy" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Money &amp; the Economy</a>
+          <a href="Category.dc.html?cat=health-freedom" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; line-height:1.3; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Health &amp; Freedom Over Your Body</a>
+          <a href="Category.dc.html?cat=food-land" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Food &amp; the Land</a>
+          <a href="Category.dc.html?cat=faith" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0;">Faith</a>
+        </div>
+        <div>
+          <h3 style="margin:0 0 20px; font-family:'Newsreader',serif; font-weight:600; font-size:34px; color:#f6efdf; letter-spacing:0.2px;">Stay Connected</h3>
+          <input type="text" placeholder="First Name" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:9px; padding:16px 20px; margin-bottom:14px;">
+          <input type="email" placeholder="Email" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:9px; padding:16px 20px; margin-bottom:14px;">
+          <button type="button" style="width:100%; font-family:'Libre Franklin',sans-serif; font-size:18px; font-weight:700; color:#fdf6ea; background:#b41f2c; border:none; border-radius:9px; padding:17px 20px; cursor:pointer;">Sign Up</button>
+        </div>
+      </div>
+      <div style="margin-top:52px; padding-top:26px; border-top:1px solid rgba(240,234,221,0.14);">
+        <p style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:16px; color:#a9b3c6;">Life with MTG · 300 Broad Street, Suite 4, Rome, GA 30161 · A media property of Marjorie Taylor Greene</p>
+        <p style="margin:0; font-family:'Libre Franklin',sans-serif; font-size:16px; color:#8391a8;"><a href="#" style="color:#c8cedd; text-decoration:underline;">Privacy</a> &nbsp;|&nbsp; <a href="#" style="color:#c8cedd; text-decoration:underline;">Sitemap</a> &nbsp;|&nbsp; © 2026 Life with MTG. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1200, &quot;height&quot;: 1500 }
+}">
+class Component extends DCLogic {
+  componentDidMount() { this._hydrate(); }
+  _hydrate() {
+    var run = function(){ document.querySelectorAll('img[data-imgsrc]').forEach(function(img){ var u = img.getAttribute('data-imgsrc'); if (u && u.indexOf('{{') === -1 && img.getAttribute('src') !== u) img.src = u; }); };
+    requestAnimationFrame(run); setTimeout(run, 60); setTimeout(run, 250);
+  }
+  renderVals() {
+    const posts = (typeof window !== 'undefined' && window.BLOG_POSTS) || [];
+    const short = { 'Politics & Power': 'Politics', 'Money & the Economy': 'Money', 'Health & Freedom Over Your Body': 'Health', 'Food & the Land': 'Food', 'Life & Family': 'Life', 'Faith': 'Faith' };
+    const sorted = posts.slice().sort((a, b) => b.dateSort - a.dateSort);
+    const seen = new Set();
+    const picked = [];
+    for (const p of sorted) { if (!seen.has(p.category)) { seen.add(p.category); picked.push(p); } if (picked.length === 3) break; }
+    const recentPosts = picked.map(p => ({
+      title: p.title,
+      image: './' + p.image,
+      tag: short[p.category] || p.category,
+      href: 'Article.dc.html?slug=' + p.slug,
+    }));
+    return { recentPosts };
+  }
+}
+</script>
+</body>
+</html>
