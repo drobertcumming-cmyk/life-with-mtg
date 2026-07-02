@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { withBase } from '../data/site.js';
+---
+<Base title="About Me — Life with MTG">
+  <Header active="about" />
+
+  <!-- ============ HERO ============ -->
+  <section class="hero-split" style="display:grid; grid-template-columns:1fr 1fr; align-items:stretch;">
+    <div style="background:#16243f; display:flex; align-items:stretch; overflow:hidden;">
+      <img src={withBase('/assets/mtg-about-portrait.jpg')} alt="Marjorie Taylor Greene" style="display:block; width:100%; height:100%; min-height:420px; align-self:stretch; object-fit:cover; object-position:center 22%; border:none;">
+    </div>
+    <div style="background:#faf5ea; display:flex; justify-content:flex-start;">
+      <div style="width:100%; max-width:560px; padding:70px 48px; display:flex; flex-direction:column; justify-content:center;">
+        <p style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#b41f2c;">Life with MTG</p>
+        <h1 class="display" style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:60px; line-height:1.02; color:#16243f; letter-spacing:-0.015em;">About Me</h1>
+        <p style="margin:22px 0 0; font-size:20px; line-height:1.55; color:#514c40; max-width:420px;">Straight talk on politics, your money, your health, and my faith — in my own words.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BODY ============ -->
+  <main class="pad-x" style="max-width:760px; margin:0 auto; padding:64px 40px 40px;">
+    <p style="margin:0 0 30px; font-family:'Libre Franklin',sans-serif; font-size:20px; line-height:1.75; color:#33322b;">I'm Marjorie Taylor Greene. Most people know me from the fights — the hearings, the votes, the arguments that made the news. This is where you get the rest of me.</p>
+
+    <p style="margin:0 0 30px; font-family:'Libre Franklin',sans-serif; font-size:20px; line-height:1.75; color:#33322b;">I spent years in Congress, and I left it in January of 2026. People ask if that was hard. The honest answer is that walking away from a system I'd stopped believing could fix itself was the easiest decision I've made in a long time. I didn't leave the fight. I left the building. There's a difference, and this blog is what I built on the other side of it.</p>
+
+    <p style="margin:0 0 30px; font-family:'Libre Franklin',sans-serif; font-size:20px; line-height:1.75; color:#33322b;">Here's the thing I figured out toward the end. Every single day, someone with a microphone tells you what you're supposed to care about — usually some crisis on the other side of the world that you'll never see and somehow always end up paying for. Meanwhile the things actually hitting your life get no airtime at all. Your grocery bill. Your health care. Whether the dollar you saved will still be worth anything when you need it. Whether the food supply that feeds your family is as secure as they tell you it is. I got tired of the distraction. So I started paying attention to what matters, out loud, and inviting you to do it with me.</p>
+
+    <p style="margin:0 0 30px; font-family:'Libre Franklin',sans-serif; font-size:20px; line-height:1.75; color:#33322b;">That's what you'll find here. I write about the economy the way it actually lands — at the checkout line, not on a trading floor. I write about health and the freedom to make your own decisions about your own body, because I've made some of those decisions myself and taken the heat for them. I write about faith, which is the foundation under all of it; I'm a Christian, and I believe God has numbered my days, and that belief is the reason I don't spend a single one of them afraid. I write about our food and our land, and the people who actually grow what the rest of us eat. And yes, I write about the political fights, because I'm still in them — I've just stopped pretending either party has clean hands.</p>
+
+    <p style="margin:0 0 30px; font-family:'Libre Franklin',sans-serif; font-size:20px; line-height:1.75; color:#33322b;">I do all of it with one rule: do your own research. I'm not asking you to take my word for anything. I'm asking you to stop taking theirs. I'll tell you what I've found, show you where I looked, and be honest about what I'm still not sure of. Then you decide for yourself. That's the whole point.</p>
+
+    <p style="margin:0; font-family:'Libre Franklin',sans-serif; font-size:20px; line-height:1.75; color:#33322b;">I'm 52. I'm not slowing down, I'm not softening, and I'm not going anywhere. I'll bring you the battles, because there are plenty. But I'll also bring you the ordinary stuff — the travel, the faith, the family, the life behind the headlines — because I think you're tired of only ever seeing people at war.</p>
+
+    <!-- signature -->
+    <div style="margin-top:48px; padding-top:36px; border-top:1px solid rgba(43,42,36,0.16);">
+      <p class="sig" style="margin:0; font-family:'Dancing Script',cursive; font-weight:600; font-size:46px; line-height:1; color:#16243f;">Marjorie Taylor Greene</p>
+      <p style="margin:16px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">Marjorie Taylor Greene · Founder, Life with MTG</p>
+    </div>
+  </main>
+
+  <Footer marginTop="40px" />
+</Base>

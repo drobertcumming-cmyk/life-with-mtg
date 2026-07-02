@@ -1,0 +1,49 @@
+---
+// Shared navy footer: Navigate + Categories link columns, Stay Connected signup,
+// and the address / legal rows. Identical on every page.
+import { categories } from '../data/blog.js';
+import { withBase, categoryUrl } from '../data/site.js';
+const { marginTop = '0' } = Astro.props;
+---
+<footer style={`background:#16243f; margin-top:${marginTop};`}>
+  <div class="pad-x" style="max-width:1200px; margin:0 auto; padding:64px 40px 40px;">
+    <div class="footer-grid" style="display:grid; grid-template-columns:1fr 1fr 1.15fr; gap:72px;">
+
+      <!-- Navigate -->
+      <div>
+        <h4 style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8391a8;">Navigate</h4>
+        <a href={withBase('/')} style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Home</a>
+        <a href={withBase('/about-me/')} style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">About Me</a>
+        <a href={withBase('/categories/')} style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Categories</a>
+        <a href={withBase('/media/')} style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Media</a>
+        <a href={withBase('/contact/')} style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0;">Contact Us</a>
+      </div>
+
+      <!-- Categories -->
+      <div>
+        <h4 style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8391a8;">Categories</h4>
+        {categories.map((c, i) => (
+          <a
+            href={categoryUrl(c.slug)}
+            style={`display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; line-height:1.3; padding:16px 0;${i < categories.length - 1 ? ' border-bottom:1px solid rgba(240,234,221,0.12);' : ''}`}
+          >{c.name}</a>
+        ))}
+      </div>
+
+      <!-- Stay Connected -->
+      <div>
+        <h3 style="margin:0 0 20px; font-family:'Newsreader',serif; font-weight:600; font-size:34px; color:#f6efdf; letter-spacing:0.2px;">Stay Connected</h3>
+        <input type="text" placeholder="First Name" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:9px; padding:16px 20px; margin-bottom:14px;">
+        <input type="email" placeholder="Email" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:9px; padding:16px 20px; margin-bottom:14px;">
+        <button type="button" style="width:100%; font-family:'Libre Franklin',sans-serif; font-size:18px; font-weight:700; color:#fdf6ea; background:#b41f2c; border:none; border-radius:9px; padding:17px 20px; cursor:pointer;">Sign Up</button>
+      </div>
+    </div>
+
+    <!-- Legal band -->
+    <div style="margin-top:52px; padding-top:26px; border-top:1px solid rgba(240,234,221,0.14);">
+      <p style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:16px; color:#a9b3c6;">Life with MTG · 300 Broad Street, Suite 4, Rome, GA 30161 · A media property of Marjorie Taylor Greene</p>
+      <p style="margin:0; font-family:'Libre Franklin',sans-serif; font-size:16px; color:#8391a8;"><a href="#" style="color:#c8cedd; text-decoration:underline;">Privacy</a> &nbsp;|&nbsp; <a href="#" style="color:#c8cedd; text-decoration:underline;">Sitemap</a> &nbsp;|&nbsp; <a href="#" style="color:#c8cedd; text-decoration:underline;">Disclosures</a> &nbsp;|&nbsp; © 2026 Life with MTG. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>

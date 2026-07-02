@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { categories } from '../data/blog.js';
+import { sortedPosts, postUrl, categoryUrl, imgUrl, withBase } from '../data/site.js';
+
+const recentPosts = sortedPosts();
+---
+<Base title="Life with MTG — Welcome to my blog">
+  <Header active="home" />
+
+  <!-- ============ HERO ============ -->
+  <section class="hero-split" style="display:grid; grid-template-columns:1fr 1fr; align-items:stretch;">
+    <div style="background:#16243f; position:relative; display:flex; align-items:stretch; overflow:hidden;">
+      <img src={withBase('/assets/mtg-portrait.png')} alt="Marjorie Taylor Greene" style="display:block; width:100%; height:100%; align-self:stretch; min-height:520px; object-fit:cover; object-position:center 12%; border:none; outline:none; box-shadow:none;">
+    </div>
+    <div style="background:#faf5ea; display:flex; justify-content:flex-start;">
+      <div style="width:100%; max-width:560px; padding:56px 40px; display:flex; flex-direction:column; justify-content:center;">
+        <p style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#b41f2c;">Life with MTG</p>
+        <h1 class="display" style="margin:0; font-family:'Newsreader',serif; font-weight:500; font-size:62px; line-height:1.04; color:#16243f; letter-spacing:-0.01em;">Welcome to my blog</h1>
+        <p style="margin:22px 0 0; font-size:20px; line-height:1.55; color:#514c40; max-width:460px;">Straight talk on politics, your money, your health, and my faith — in my own words.</p>
+        <div style="display:flex; align-items:center; gap:16px; margin-top:32px; flex-wrap:wrap;">
+          <a href="#recent" style="font-family:'Libre Franklin',sans-serif; font-size:17px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:15px 30px; border-radius:9px;">Read the latest</a>
+          <a href={withBase('/subscribe/')} style="font-family:'Libre Franklin',sans-serif; font-size:17px; font-weight:600; color:#16243f; background:transparent; padding:14px 30px; border-radius:9px; border:1.5px solid #16243f;">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MAIN ============ -->
+  <main class="split-main pad-x" style="max-width:1200px; margin:0 auto; padding:64px 40px 72px; display:grid; grid-template-columns:1fr 360px; gap:64px; align-items:start;">
+
+    <!-- ---- RECENT POSTS ---- -->
+    <section id="recent">
+      <div style="display:flex; align-items:center; gap:20px; margin-bottom:8px;">
+        <h2 id="recent-heading" style="margin:0; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8a8172;">Recent Posts</h2>
+        <span style="flex:1; height:1px; background:rgba(43,42,36,0.16);"></span>
+        <a href="#" id="clear-filter" style="display:none; align-items:center; gap:6px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#b41f2c;">Clear filter ✕</a>
+      </div>
+
+      <div id="recent-list">
+        {recentPosts.map((post) => (
+          <article class="post-row" data-category={post.category} style="display:grid; grid-template-columns:132px 1fr; gap:28px; align-items:start; padding:34px 0; border-bottom:1px solid rgba(43,42,36,0.13);">
+            <div style="width:132px; height:108px; overflow:hidden; border-radius:10px;"><img src={imgUrl(post.image)} alt="" style="display:block; width:132px; height:108px; object-fit:cover; object-position:center 30%;"></div>
+            <div>
+              <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:27px; line-height:1.18; color:#16243f;"><a href={postUrl(post.slug)}>{post.title}</a></h3>
+              <p style="margin:11px 0 0; font-size:15px; color:#8a8172;">{post.date} · <a href={categoryUrl(post.catSlug)} class="cat-link" data-category={post.category} style="color:#b41f2c; font-weight:700; cursor:pointer;">{post.category}</a></p>
+              <p style="margin:12px 0 0; font-size:16.5px; line-height:1.6; color:#514c40; max-width:560px;">{post.snippet}</p>
+              <a href={postUrl(post.slug)} style="display:inline-block; margin-top:16px; font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#b41f2c;">Read more →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p id="empty-state" style="display:none; margin:40px 0 8px; font-family:'Newsreader',serif; font-style:italic; font-size:22px; color:#8a8172;">No posts in this category yet.</p>
+
+      <a href="#" style="display:inline-block; margin-top:34px; font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:600; color:#8a8172;">Older posts · page 1 of 14 →</a>
+    </section>
+
+    <!-- ---- SIDEBAR ---- -->
+    <aside style="display:flex; flex-direction:column; gap:24px; position:sticky; top:28px;">
+      <div style="background:#16243f; border-radius:14px; padding:30px 30px 32px;">
+        <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:25px; color:#f6efdf;">Subscribe</h3>
+        <p style="margin:12px 0 0; font-size:15.5px; line-height:1.55; color:#b6bfd1;">New posts to your inbox. First-party, consented signups — no lists sold, ever.</p>
+        <a href={withBase('/subscribe/')} style="display:block; text-align:center; margin-top:22px; font-family:'Libre Franklin',sans-serif; font-size:17px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:14px 20px; border-radius:9px;">Sign up</a>
+      </div>
+
+      <div id="cat-list" style="background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; padding:26px 28px 10px;">
+        <h3 style="margin:0 0 6px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#c19a3e;">Browse by Category</h3>
+        {categories.map((c, i) => (
+          <a href={categoryUrl(c.slug)} class="cat-link" data-category={c.name} style={`display:block; font-family:'Newsreader',serif; font-size:20px; font-weight:500; color:#16243f; padding:15px 0; cursor:pointer;${i < categories.length - 1 ? ' border-bottom:1px solid rgba(43,42,36,0.12);' : ''}`}>{c.name}</a>
+        ))}
+      </div>
+    </aside>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  // Category filter: clicking a category (sidebar or a post's inline tag) narrows
+  // the Recent Posts list to that subject, with an active-filter heading, a Clear
+  // button, and an empty state. Ctrl/Cmd-click still follows the link to the
+  // full category page.
+  const norm = (s) => (s || '').replace(/\s+/g, ' ').trim();
+
+  function applyFilter(cat) {
+    const target = norm(cat);
+    let shown = 0;
+    document.querySelectorAll('#recent .post-row').forEach((a) => {
+      const match = !target || norm(a.getAttribute('data-category')) === target;
+      a.style.display = match ? 'grid' : 'none';
+      if (match) shown++;
+    });
+    const heading = document.getElementById('recent-heading');
+    if (heading) heading.textContent = target || 'Recent Posts';
+    const clear = document.getElementById('clear-filter');
+    if (clear) clear.style.display = target ? 'inline-flex' : 'none';
+    const empty = document.getElementById('empty-state');
+    if (empty) empty.style.display = (target && shown === 0) ? 'block' : 'none';
+    document.querySelectorAll('#cat-list .cat-link').forEach((a) => {
+      const on = target && norm(a.getAttribute('data-category')) === target;
+      a.style.color = on ? '#b41f2c' : '#16243f';
+      a.style.fontWeight = on ? '700' : '500';
+    });
+  }
+
+  document.querySelectorAll('.cat-link').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return; // let modified clicks open the category page
+      e.preventDefault();
+      applyFilter(a.getAttribute('data-category'));
+    });
+  });
+  const clearBtn = document.getElementById('clear-filter');
+  if (clearBtn) clearBtn.addEventListener('click', (e) => { e.preventDefault(); applyFilter(null); });
+</script>

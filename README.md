@@ -1,25 +1,53 @@
-# CODING AGENTS: READ THIS FIRST
+# Life with MTG
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+The blog of Marjorie Taylor Greene — a fast, static, content-driven site built
+with [Astro](https://astro.build). Navy / crimson / cream flag palette, editorial
+serif (Newsreader) paired with an American grotesque (Libre Franklin).
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Implemented from the Claude Design handoff bundle (see **`project/`** for the
+original HTML/CSS prototypes and **`chats/`** for the design conversation).
 
-## What you should do — IMPORTANT
+## Pages
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+| Route | Page |
+| --- | --- |
+| `/` | Homepage — split hero, recent posts with category filter, sidebar |
+| `/about-me/` | About Me — narrative + signature |
+| `/categories/` | Categories overview with live search |
+| `/category/[slug]/` | Single category — featured + grid + search (6 pages) |
+| `/posts/[slug]/` | Article — share rail, feature image, pull-quote, related (21 pages) |
+| `/media/` | Media & press resources |
+| `/subscribe/` | Newsletter signup |
+| `/contact/` | Contact form |
 
-**Find the primary design file under `project/` and read it top to bottom.** The chat transcripts will tell you which file the user was last iterating on. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+All content lives in **`src/data/blog.js`** (21 posts, 6 categories). Add a post
+there and its article page, category listing, homepage row, and related-post
+links are generated automatically.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Develop
 
-## About the design files
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # static output → dist/
+npm run preview  # serve the built site
+```
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Deploy (GitHub Pages)
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+`.github/workflows/deploy.yml` builds and publishes to GitHub Pages on every push
+to `main` (and to `implement-mtg-site` while in review). **One-time setup:** in the
+repo, go to **Settings → Pages → Source → "GitHub Actions"**. The workflow then
+publishes to `https://<owner>.github.io/<repo>/`.
 
-## Bundle contents
+`astro.config.mjs` derives the base path automatically from `GITHUB_REPOSITORY`,
+so links and assets are correct whether the site is served at the domain root or
+under a `/<repo>/` project path. Override with the `SITE_URL` / `BASE_PATH` env
+vars (e.g. when you point a custom domain at it).
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Life With MTG Homepage` project files (HTML prototypes, assets, components)
+## Notes / not yet wired
+
+The forms (Subscribe, Contact, footer signups) and the header search box are
+**visual only** — matching the approved prototypes. Wire them to an email provider
+/ form handler when one is chosen. Media page facts, press email, social handles,
+and the media thumbnails are placeholders for her team to supply.

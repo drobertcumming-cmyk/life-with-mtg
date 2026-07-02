@@ -1,0 +1,54 @@
+---
+// Base document shell: fonts, resets, and the shared responsive layer.
+// Responsive behavior is driven by utility classes (below) rather than the
+// prototype's brittle [style*=...] selectors, so it survives clean static HTML.
+const { title, description = "Straight talk on politics, your money, your health, and my faith — in my own words. The blog of Marjorie Taylor Greene." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Libre+Franklin:wght@400;500;600;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ---------- RESPONSIVE (tablet + mobile) ---------- */
+    @media (max-width: 1024px) {
+      .split-main   { grid-template-columns: 1fr !important; }
+      .grid-featured{ grid-template-columns: 1fr !important; }
+      .grid-contact { grid-template-columns: 1fr !important; }
+      .grid-3       { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .site-header-inner { flex-wrap: wrap !important; row-gap: 16px !important; }
+      .site-nav { flex-wrap: wrap !important; justify-content: flex-start !important; column-gap: 20px !important; row-gap: 12px !important; }
+      .site-nav .nav-search { display: none !important; }
+      .hero-split   { grid-template-columns: 1fr !important; }
+      .footer-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .grid-2       { grid-template-columns: 1fr !important; }
+      .grid-3       { grid-template-columns: 1fr !important; }
+      .grid-4       { grid-template-columns: 1fr 1fr !important; }
+      .display      { font-size: 40px !important; line-height: 1.08 !important; }
+      .share-rail   { display: none !important; }
+      .pad-x        { padding-left: 22px !important; padding-right: 22px !important; }
+    }
+    @media (max-width: 480px) {
+      .grid-4  { grid-template-columns: 1fr !important; }
+      .display { font-size: 33px !important; }
+      .sig     { font-size: 34px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div style="font-family:'Libre Franklin',system-ui,sans-serif; background:#f1ead9; color:#2b2a24; min-height:100vh; -webkit-font-smoothing:antialiased;">
+    <slot />
+  </div>
+</body>
+</html>

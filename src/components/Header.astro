@@ -1,0 +1,45 @@
+---
+// Shared site header: flag-emblem logo, primary nav, search field, Subscribe.
+// `active` highlights the current section (crimson underline), matching the design.
+import { withBase } from '../data/site.js';
+const { active = '' } = Astro.props;
+
+const nav = [
+  { key: 'home', label: 'Home', href: withBase('/') },
+  { key: 'about', label: 'About Me', href: withBase('/about-me/') },
+  { key: 'categories', label: 'Categories', href: withBase('/categories/') },
+  { key: 'media', label: 'Media', href: withBase('/media/') },
+  { key: 'contact', label: 'Contact Us', href: withBase('/contact/') },
+];
+
+const activeStyle =
+  "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#ffffff; padding-bottom:4px; border-bottom:2px solid #b41f2c;";
+const idleStyle =
+  "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;";
+---
+<header style="background:#16243f; width:100%;">
+  <div class="site-header-inner pad-x" style="max-width:1200px; margin:0 auto; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
+    <a href={withBase('/')} style="display:flex; align-items:center; gap:14px;">
+      <span style="position:relative; width:46px; height:46px; border-radius:11px; overflow:hidden; box-shadow:inset 0 0 0 1.5px rgba(246,239,223,0.55); flex:none;">
+        <span style="position:absolute; inset:0; background:repeating-linear-gradient(180deg, #b41f2c 0, #b41f2c 16.666%, #faf5ea 16.666%, #faf5ea 33.333%);"></span>
+        <span style="position:absolute; top:0; left:0; width:60%; height:58%; background:#16243f; display:flex; align-items:center; justify-content:center;">
+          <span style="width:15px; height:15px; background:#faf5ea; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);"></span>
+        </span>
+      </span>
+      <span style="display:flex; flex-direction:column; line-height:1;">
+        <span style="font-family:'Libre Franklin',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#a9b3c6; margin-bottom:4px;">Life with</span>
+        <span style="font-family:'Newsreader',serif; font-weight:700; font-size:30px; color:#f6efdf; letter-spacing:0.5px;">MTG</span>
+      </span>
+    </a>
+    <nav class="site-nav" style="display:flex; align-items:center; gap:30px;">
+      {nav.map((item) => (
+        <a href={item.href} style={item.key === active ? activeStyle : idleStyle}>{item.label}</a>
+      ))}
+      <label class="nav-search" style="display:flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); border-radius:8px; padding:9px 16px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8391a8" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+        <input type="text" placeholder="Search" style="background:transparent; border:none; outline:none; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#c8cedd; width:96px;">
+      </label>
+      <a href={withBase('/subscribe/')} style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:11px 24px; border-radius:8px;">Subscribe</a>
+    </nav>
+  </div>
+</header>
