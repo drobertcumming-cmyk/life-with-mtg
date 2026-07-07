@@ -18,6 +18,7 @@ const { title, description = "Straight talk on politics, your money, your health
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     a { text-decoration: none; color: inherit; }
+    #nav-burger { display: none; }
 
     /* ---------- RESPONSIVE (tablet + mobile) ---------- */
     @media (max-width: 1024px) {
@@ -28,8 +29,11 @@ const { title, description = "Straight talk on politics, your money, your health
     }
     @media (max-width: 768px) {
       .site-header-inner { flex-wrap: wrap !important; row-gap: 16px !important; }
-      .site-nav { flex-wrap: wrap !important; justify-content: flex-start !important; column-gap: 20px !important; row-gap: 12px !important; }
-      .site-nav .nav-search { display: none !important; }
+      #nav-burger { display: flex !important; }
+      .site-nav { display: none !important; width: 100% !important; order: 3; flex-direction: column !important; align-items: flex-start !important; gap: 2px !important; padding-top: 10px !important; }
+      .site-nav[data-open="1"] { display: flex !important; }
+      .site-nav > a { width: 100%; padding: 13px 2px !important; font-size: 18px !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .site-nav .nav-search { display: flex !important; width: 100%; margin-top: 8px; }
       .hero-split   { grid-template-columns: 1fr !important; }
       .footer-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
       .grid-2       { grid-template-columns: 1fr !important; }

@@ -32,6 +32,9 @@ const idleStyle =
         <span style="font-family:'Newsreader',serif; font-weight:700; font-size:30px; color:#f6efdf; letter-spacing:0.5px;">MTG</span>
       </span>
     </a>
+    <button id="nav-burger" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:46px; height:46px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); border-radius:9px; cursor:pointer; padding:0;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6efdf" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+    </button>
     <nav class="site-nav" style="display:flex; align-items:center; gap:30px;">
       {nav.map((item) => (
         <a href={item.href} style={item.key === active ? activeStyle : idleStyle}>{item.label}</a>
@@ -44,3 +47,16 @@ const idleStyle =
     </nav>
   </div>
 </header>
+
+<script>
+  // Mobile hamburger: toggle the nav open/closed on small screens.
+  document.addEventListener('click', (e) => {
+    const b = e.target instanceof Element ? e.target.closest('#nav-burger') : null;
+    if (!b) return;
+    const nav = b.closest('header')?.querySelector('nav');
+    if (!nav) return;
+    const open = nav.getAttribute('data-open') === '1';
+    nav.setAttribute('data-open', open ? '0' : '1');
+    b.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+  });
+</script>
