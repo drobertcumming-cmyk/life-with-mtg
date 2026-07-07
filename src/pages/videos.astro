@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Placeholder videos — thumbnails/titles/durations would pull from YouTube later.
+const videos = [
+  { type: 'Interview',         label: 'Interview',          duration: '24:18', date: 'Jun 28, 2026' },
+  { type: 'Commentary',        label: 'Commentary',         duration: '09:07', date: 'Jun 25, 2026' },
+  { type: 'Podcast',           label: 'Podcast',            duration: '18:44', date: 'Jun 21, 2026' },
+  { type: 'Short',             label: 'Short',              duration: '02:56', date: 'Jun 18, 2026' },
+  { type: 'Behind the Scenes', label: 'Behind the Scenes',  duration: '11:22', date: 'Jun 12, 2026' },
+];
+
+const pills = [
+  { filter: 'All', label: 'All' },
+  { filter: 'Podcast', label: 'Podcast Episodes' },
+  { filter: 'Interview', label: 'Interviews' },
+  { filter: 'Commentary', label: 'Commentary' },
+  { filter: 'Short', label: 'Shorts' },
+  { filter: 'Behind the Scenes', label: 'Behind the Scenes' },
+];
+
+const pillActive = "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#16243f; border:1px solid #16243f; border-radius:999px; padding:11px 26px; cursor:pointer;";
+const pillIdle = "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:600; color:#16243f; background:#faf5ea; border:1px solid rgba(43,42,36,0.28); border-radius:999px; padding:11px 26px; cursor:pointer;";
+
+const playBtn = (w, h) => `<span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:${w}px; height:${h}px; border-radius:12px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.28);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>`;
+---
+<Base title="Videos — Life with MTG" description="Every upload from MTG's channel — interviews, commentary, and behind-the-scenes, in one place.">
+  <Header active="videos" />
+
+  <main class="pad-x" style="max-width:1200px; margin:0 auto; padding:56px 40px 72px;">
+
+    <p style="margin:0 0 12px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#b41f2c;">Watch</p>
+    <h1 class="display" style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:60px; line-height:1.02; color:#16243f; letter-spacing:-0.015em;">Videos</h1>
+    <p style="margin:20px 0 0; font-size:20px; line-height:1.55; color:#514c40; max-width:660px;">Every upload from MTG's channel — interviews, commentary, and the behind-the-scenes stuff, in one place.</p>
+
+    <!-- featured -->
+    <a href="#" style="display:block; margin-top:40px;"><article class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; background:#16243f; border-radius:16px; overflow:hidden;">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+        <span style="position:absolute; top:22px; left:22px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#fdf6ea; background:#b41f2c; padding:7px 14px; border-radius:6px;">Latest</span>
+        <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:84px; height:58px; border-radius:15px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px rgba(0,0,0,0.32);"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+        <span style="position:absolute; bottom:16px; right:16px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.92); padding:5px 11px; border-radius:6px;">31:52</span>
+      </div>
+      <div style="padding:48px 46px; display:flex; flex-direction:column; justify-content:center;">
+        <p style="margin:0 0 12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#c19a3e;">Podcast Episode</p>
+        <h2 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:36px; line-height:1.12; color:#f6efdf; letter-spacing:-0.01em;">[Latest episode title — pulls from YouTube]</h2>
+        <p style="margin:20px 0 0; font-family:'Libre Franklin',sans-serif; font-size:18px; line-height:1.6; color:#b6bfd1;">Description placeholder — pulls from the video's YouTube description.</p>
+        <p style="margin:20px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8391a8;">Jul 1, 2026 · 31:52</p>
+      </div>
+    </article></a>
+
+    <!-- filter pills -->
+    <div id="pill-row" style="display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; padding-bottom:30px; border-bottom:1px solid rgba(43,42,36,0.16);">
+      {pills.map((p, i) => (
+        <a href="#" data-filter={p.filter} style={i === 0 ? pillActive : pillIdle}>{p.label}</a>
+      ))}
+    </div>
+
+    <!-- grid -->
+    <div id="video-grid" class="grid-3" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:34px;">
+      {videos.map((v) => (
+        <a href="#" data-type={v.type} style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+          <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);" set:html={playBtn(70, 48) + `<span style="position:absolute; bottom:12px; right:12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.9); padding:4px 9px; border-radius:5px;">${v.duration}</span>`}></div>
+          <div style="padding:20px 24px 26px;">
+            <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">{v.label}</p>
+            <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:23px; line-height:1.2; color:#16243f;">[Video title]</h3>
+            <p style="margin:11px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">{v.date}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p id="video-empty" style="display:none; margin:44px 0; text-align:center; font-family:'Newsreader',serif; font-style:italic; font-size:24px; color:#8a8172;">No videos in this category yet.</p>
+
+    <div style="display:flex; justify-content:center; margin-top:40px;">
+      <button type="button" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#16243f; background:transparent; border:1.5px solid rgba(43,42,36,0.4); border-radius:9px; padding:16px 36px; cursor:pointer;">Load more videos</button>
+    </div>
+    <p style="margin:24px 0 0; text-align:center; font-family:'Libre Franklin',sans-serif; font-size:15px; font-style:italic; color:#8a8172;">Thumbnails, titles, durations, and tags pull live from her YouTube channel — placeholders shown.</p>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  // Filter the video grid by category pill.
+  const activeStyle = "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#16243f; border:1px solid #16243f; border-radius:999px; padding:11px 26px; cursor:pointer;";
+  const idleStyle = "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:600; color:#16243f; background:#faf5ea; border:1px solid rgba(43,42,36,0.28); border-radius:999px; padding:11px 26px; cursor:pointer;";
+
+  document.querySelectorAll('#pill-row a').forEach((pill) => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      const val = pill.getAttribute('data-filter');
+      document.querySelectorAll('#pill-row a').forEach((p) => {
+        p.setAttribute('style', p.getAttribute('data-filter') === val ? activeStyle : idleStyle);
+      });
+      let shown = 0;
+      document.querySelectorAll('#video-grid a[data-type]').forEach((c) => {
+        const match = val === 'All' || c.getAttribute('data-type') === val;
+        c.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      const empty = document.getElementById('video-empty');
+      if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+    });
+  });
+</script>
