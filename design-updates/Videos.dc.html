@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  a { text-decoration: none; color: inherit; }
+  #nav-burger { display: none; }
+  @media (max-width: 1024px) {
+    [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 768px) {
+    #nav-burger { display: flex !important; }
+    header nav { display: none !important; width: 100% !important; order: 3; flex-wrap: nowrap !important; flex-direction: column !important; align-items: flex-start !important; gap: 2px !important; padding-top: 10px !important; }
+    header nav[data-open="1"] { display: flex !important; }
+    header nav a { width: 100%; padding: 13px 2px !important; font-size: 18px !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    header nav label { display: flex !important; width: 100%; margin-top: 8px; }
+    [style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+    [style*="1fr 1fr 1.15fr"] { grid-template-columns: 1fr !important; gap: 40px !important; }
+    [style*="font-size: 60px"], [style*="font-size: 58px"] { font-size: 40px !important; line-height: 1.08 !important; }
+    header > div, main, footer > div { padding-left: 22px !important; padding-right: 22px !important; }
+  }
+  @media (max-width: 480px) {
+    [style*="font-size: 60px"], [style*="font-size: 58px"] { font-size: 33px !important; }
+  }
+</style>
+<script src="./blogData.js"></script>
+<script>
+(function(){
+  if (window.__mtgBurger) return; window.__mtgBurger = 1;
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('#nav-burger');
+    if (!b) return;
+    var h = b.closest('header'); var nav = h && h.querySelector('nav'); if (!nav) return;
+    var open = nav.getAttribute('data-open') === '1';
+    nav.setAttribute('data-open', open ? '0' : '1');
+    b.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+  });
+})();
+</script>
+</helmet>
+
+<div style="font-family:'Libre Franklin',system-ui,sans-serif; background:#f1ead9; color:#2b2a24; min-height:100vh; -webkit-font-smoothing:antialiased;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="background:#16243f; width:100%;">
+    <div style="max-width:1200px; margin:0 auto; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
+      <a href="Life%20with%20MTG.dc.html" style="display:flex; align-items:center; gap:14px;">
+        <span style="position:relative; width:46px; height:46px; border-radius:11px; overflow:hidden; box-shadow:inset 0 0 0 1.5px rgba(246,239,223,0.55); flex:none;">
+          <span style="position:absolute; inset:0; background:repeating-linear-gradient(180deg, #b41f2c 0, #b41f2c 16.666%, #faf5ea 16.666%, #faf5ea 33.333%);"></span>
+          <span style="position:absolute; top:0; left:0; width:60%; height:58%; background:#16243f; display:flex; align-items:center; justify-content:center;">
+            <span style="width:15px; height:15px; background:#faf5ea; clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);"></span>
+          </span>
+        </span>
+        <span style="display:flex; flex-direction:column; line-height:1;">
+          <span style="font-family:'Libre Franklin',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#a9b3c6; margin-bottom:4px;">Life with</span>
+          <span style="font-family:'Newsreader',serif; font-weight:700; font-size:30px; color:#f6efdf; letter-spacing:0.5px;">MTG</span>
+        </span>
+      </a>
+      <button id="nav-burger" aria-label="Open menu" style="display:none; align-items:center; justify-content:center; width:46px; height:46px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); border-radius:9px; cursor:pointer; padding:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6efdf" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+      </button>
+      <nav style="display:flex; align-items:center; gap:30px;">
+        <a href="Life%20with%20MTG.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Home</a>
+        <a href="About%20Me.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">About Me</a>
+        <a href="Categories.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Categories</a>
+        <a href="Videos.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#ffffff; padding-bottom:4px; border-bottom:2px solid #b41f2c;">Videos</a>
+        <a href="Media.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Media</a>
+        <a href="Contact%20Us.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;">Contact Us</a>
+        <label style="display:flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); border-radius:8px; padding:9px 16px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8391a8" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+          <input type="text" placeholder="Search" style="background:transparent; border:none; outline:none; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#c8cedd; width:96px;">
+        </label>
+        <a href="Subscribe.dc.html" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:11px 24px; border-radius:8px;">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main style="max-width:1200px; margin:0 auto; padding:56px 40px 72px;">
+
+    <p style="margin:0 0 12px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#b41f2c;">Watch</p>
+    <h1 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:60px; line-height:1.02; color:#16243f; letter-spacing:-0.015em;">Videos</h1>
+    <p style="margin:20px 0 0; font-size:20px; line-height:1.55; color:#514c40; max-width:660px;">Every upload from MTG's channel — interviews, commentary, and the behind-the-scenes stuff, in one place.</p>
+
+    <!-- featured -->
+    <a href="#" style="display:block; margin-top:40px;"><article style="display:grid; grid-template-columns:1fr 1fr; background:#16243f; border-radius:16px; overflow:hidden;">
+      <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+        <span style="position:absolute; top:22px; left:22px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#fdf6ea; background:#b41f2c; padding:7px 14px; border-radius:6px;">Latest</span>
+        <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:84px; height:58px; border-radius:15px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px rgba(0,0,0,0.32);"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+        <span style="position:absolute; bottom:16px; right:16px; font-family:'Libre Franklin',sans-serif; font-size:14px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.92); padding:5px 11px; border-radius:6px;">31:52</span>
+      </div>
+      <div style="padding:48px 46px; display:flex; flex-direction:column; justify-content:center;">
+        <p style="margin:0 0 12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#c19a3e;">Podcast Episode</p>
+        <h2 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:36px; line-height:1.12; color:#f6efdf; letter-spacing:-0.01em;">[Latest episode title — pulls from YouTube]</h2>
+        <p style="margin:20px 0 0; font-family:'Libre Franklin',sans-serif; font-size:18px; line-height:1.6; color:#b6bfd1;">Description placeholder — pulls from the video's YouTube description.</p>
+        <p style="margin:20px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8391a8;">Jul 1, 2026 · 31:52</p>
+      </div>
+    </article></a>
+
+    <!-- filter pills -->
+    <div id="pill-row" style="display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; padding-bottom:30px; border-bottom:1px solid rgba(43,42,36,0.16);">
+      <a href="#" data-filter="All" onClick="{{ onPill }}" style="{{ pillActive }}">All</a>
+      <a href="#" data-filter="Podcast" onClick="{{ onPill }}" style="{{ pillIdle }}">Podcast Episodes</a>
+      <a href="#" data-filter="Interview" onClick="{{ onPill }}" style="{{ pillIdle }}">Interviews</a>
+      <a href="#" data-filter="Commentary" onClick="{{ onPill }}" style="{{ pillIdle }}">Commentary</a>
+      <a href="#" data-filter="Short" onClick="{{ onPill }}" style="{{ pillIdle }}">Shorts</a>
+      <a href="#" data-filter="Behind the Scenes" onClick="{{ onPill }}" style="{{ pillIdle }}">Behind the Scenes</a>
+    </div>
+
+    <!-- grid -->
+    <div id="video-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:34px;">
+
+      <a href="#" data-type="Interview" style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+        <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+          <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:70px; height:48px; border-radius:12px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.28);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+          <span style="position:absolute; bottom:12px; right:12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.9); padding:4px 9px; border-radius:5px;">24:18</span>
+        </div>
+        <div style="padding:20px 24px 26px;">
+          <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">Interview</p>
+          <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:23px; line-height:1.2; color:#16243f;">[Video title]</h3>
+          <p style="margin:11px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">Jun 28, 2026</p>
+        </div>
+      </a>
+
+      <a href="#" data-type="Commentary" style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+        <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+          <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:70px; height:48px; border-radius:12px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.28);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+          <span style="position:absolute; bottom:12px; right:12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.9); padding:4px 9px; border-radius:5px;">09:07</span>
+        </div>
+        <div style="padding:20px 24px 26px;">
+          <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">Commentary</p>
+          <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:23px; line-height:1.2; color:#16243f;">[Video title]</h3>
+          <p style="margin:11px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">Jun 25, 2026</p>
+        </div>
+      </a>
+
+      <a href="#" data-type="Podcast" style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+        <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+          <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:70px; height:48px; border-radius:12px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.28);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+          <span style="position:absolute; bottom:12px; right:12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.9); padding:4px 9px; border-radius:5px;">18:44</span>
+        </div>
+        <div style="padding:20px 24px 26px;">
+          <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">Podcast</p>
+          <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:23px; line-height:1.2; color:#16243f;">[Video title]</h3>
+          <p style="margin:11px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">Jun 21, 2026</p>
+        </div>
+      </a>
+
+      <a href="#" data-type="Short" style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+        <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+          <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:70px; height:48px; border-radius:12px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.28);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+          <span style="position:absolute; bottom:12px; right:12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.9); padding:4px 9px; border-radius:5px;">02:56</span>
+        </div>
+        <div style="padding:20px 24px 26px;">
+          <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">Short</p>
+          <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:23px; line-height:1.2; color:#16243f;">[Video title]</h3>
+          <p style="margin:11px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">Jun 18, 2026</p>
+        </div>
+      </a>
+
+      <a href="#" data-type="Behind the Scenes" style="display:block; background:#faf5ea; border:1px solid rgba(43,42,36,0.13); border-radius:14px; overflow:hidden;">
+        <div style="position:relative; aspect-ratio:16/9; background:linear-gradient(150deg,#233a63,#0e1a30);">
+          <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:70px; height:48px; border-radius:12px; background:#b41f2c; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,0.28);"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fdf6ea"><path d="M8 5v14l11-7z"></path></svg></span>
+          <span style="position:absolute; bottom:12px; right:12px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; color:#fdf6ea; background:rgba(13,22,38,0.9); padding:4px 9px; border-radius:5px;">11:22</span>
+        </div>
+        <div style="padding:20px 24px 26px;">
+          <p style="margin:0 0 8px; font-family:'Libre Franklin',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#b41f2c;">Behind the Scenes</p>
+          <h3 style="margin:0; font-family:'Newsreader',serif; font-weight:600; font-size:23px; line-height:1.2; color:#16243f;">[Video title]</h3>
+          <p style="margin:11px 0 0; font-family:'Libre Franklin',sans-serif; font-size:15px; color:#8a8172;">Jun 12, 2026</p>
+        </div>
+      </a>
+    </div>
+
+    <p id="video-empty" style="display:none; margin:44px 0; text-align:center; font-family:'Newsreader',serif; font-style:italic; font-size:24px; color:#8a8172;">No videos in this category yet.</p>
+
+    <div style="display:flex; justify-content:center; margin-top:40px;">
+      <button type="button" style="font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#16243f; background:transparent; border:1.5px solid rgba(43,42,36,0.4); border-radius:9px; padding:16px 36px; cursor:pointer;">Load more videos</button>
+    </div>
+    <p style="margin:24px 0 0; text-align:center; font-family:'Libre Franklin',sans-serif; font-size:15px; font-style:italic; color:#8a8172;">Thumbnails, titles, durations, and tags pull live from her YouTube channel — placeholders shown.</p>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#16243f;">
+    <div style="max-width:1200px; margin:0 auto; padding:64px 40px 40px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1.15fr; gap:72px;">
+        <div>
+          <h4 style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8391a8;">Navigate</h4>
+          <a href="Life%20with%20MTG.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Home</a>
+          <a href="Categories.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Categories</a>
+          <a href="Videos.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Videos</a>
+          <a href="Media.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Media</a>
+          <a href="About%20Me.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">About Me</a>
+          <a href="Contact%20Us.dc.html" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0;">Contact Us</a>
+        </div>
+        <div>
+          <h4 style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8391a8;">Categories</h4>
+          <a href="Category.dc.html?cat=politics-power" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Politics &amp; Power</a>
+          <a href="Category.dc.html?cat=money-economy" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Money &amp; the Economy</a>
+          <a href="Category.dc.html?cat=health-freedom" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; line-height:1.3; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Health &amp; Freedom Over Your Body</a>
+          <a href="Category.dc.html?cat=food-land" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0; border-bottom:1px solid rgba(240,234,221,0.12);">Food &amp; the Land</a>
+          <a href="Category.dc.html?cat=faith" style="display:block; font-family:'Libre Franklin',sans-serif; font-size:19px; font-weight:500; color:#f0eadd; padding:16px 0;">Faith</a>
+        </div>
+        <div>
+          <h3 style="margin:0 0 20px; font-family:'Newsreader',serif; font-weight:600; font-size:34px; color:#f6efdf; letter-spacing:0.2px;">Stay Connected</h3>
+          <input type="text" placeholder="First Name" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:9px; padding:16px 20px; margin-bottom:14px;">
+          <input type="email" placeholder="Email" style="width:100%; box-sizing:border-box; font-family:'Libre Franklin',sans-serif; font-size:17px; color:#16243f; background:#ffffff; border:none; border-radius:9px; padding:16px 20px; margin-bottom:14px;">
+          <button type="button" style="width:100%; font-family:'Libre Franklin',sans-serif; font-size:18px; font-weight:700; color:#fdf6ea; background:#b41f2c; border:none; border-radius:9px; padding:17px 20px; cursor:pointer;">Sign Up</button>
+        </div>
+      </div>
+      <div style="margin-top:52px; padding-top:26px; border-top:1px solid rgba(240,234,221,0.14);">
+        <p style="margin:0 0 14px; font-family:'Libre Franklin',sans-serif; font-size:16px; color:#a9b3c6;">Life with MTG · 300 Broad Street, Suite 4, Rome, GA 30161 · A media property of Marjorie Taylor Greene</p>
+        <p style="margin:0; font-family:'Libre Franklin',sans-serif; font-size:16px; color:#8391a8;"><a href="#" style="color:#c8cedd; text-decoration:underline;">Privacy</a> &nbsp;|&nbsp; <a href="#" style="color:#c8cedd; text-decoration:underline;">Sitemap</a> &nbsp;|&nbsp; © 2026 Life with MTG. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1200, &quot;height&quot;: 2200 }
+}">
+class Component extends DCLogic {
+  constructor(props) { super(props); this._active = 'All'; }
+  _pill(on) {
+    return on
+      ? "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#16243f; border:1px solid #16243f; border-radius:999px; padding:11px 26px; cursor:pointer;"
+      : "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:600; color:#16243f; background:#faf5ea; border:1px solid rgba(43,42,36,0.28); border-radius:999px; padding:11px 26px; cursor:pointer;";
+  }
+  renderVals() {
+    return {
+      pillActive: this._pill(true),
+      pillIdle: this._pill(false),
+      onPill: (e) => {
+        e.preventDefault();
+        const val = e.currentTarget.getAttribute('data-filter');
+        this._active = val;
+        document.querySelectorAll('#pill-row a').forEach((p) => {
+          p.setAttribute('style', this._pill(p.getAttribute('data-filter') === val));
+        });
+        const cards = document.querySelectorAll('#video-grid a[data-type]');
+        let shown = 0;
+        cards.forEach((c) => {
+          const t = c.getAttribute('data-type');
+          const match = val === 'All' || t === val;
+          c.style.display = match ? '' : 'none';
+          if (match) shown++;
+        });
+        const empty = document.getElementById('video-empty');
+        if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
