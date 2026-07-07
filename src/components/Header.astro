@@ -17,12 +17,7 @@ const activeStyle =
   "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#ffffff; padding-bottom:4px; border-bottom:2px solid #b41f2c;";
 const idleStyle =
   "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;";
-// Videos is a highlighted red pill CTA in the nav (per the homepage design).
-const videosPill =
-  "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:9px 20px; border-radius:999px;";
-
-const navStyle = (item) =>
-  item.key === 'videos' ? videosPill : item.key === active ? activeStyle : idleStyle;
+const navStyle = (item) => (item.key === active ? activeStyle : idleStyle);
 ---
 <header style="background:#16243f; width:100%;">
   <div class="site-header-inner pad-x" style="max-width:1200px; margin:0 auto; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
