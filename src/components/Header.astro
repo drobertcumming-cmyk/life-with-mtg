@@ -17,6 +17,12 @@ const activeStyle =
   "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#ffffff; padding-bottom:4px; border-bottom:2px solid #b41f2c;";
 const idleStyle =
   "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:500; color:#c8cedd;";
+// Videos is a highlighted red pill CTA in the nav (per the homepage design).
+const videosPill =
+  "font-family:'Libre Franklin',sans-serif; font-size:16px; font-weight:700; color:#fdf6ea; background:#b41f2c; padding:9px 20px; border-radius:999px;";
+
+const navStyle = (item) =>
+  item.key === 'videos' ? videosPill : item.key === active ? activeStyle : idleStyle;
 ---
 <header style="background:#16243f; width:100%;">
   <div class="site-header-inner pad-x" style="max-width:1200px; margin:0 auto; padding:26px 40px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
@@ -37,7 +43,7 @@ const idleStyle =
     </button>
     <nav class="site-nav" style="display:flex; align-items:center; gap:30px;">
       {nav.map((item) => (
-        <a href={item.href} style={item.key === active ? activeStyle : idleStyle}>{item.label}</a>
+        <a href={item.href} style={navStyle(item)}>{item.label}</a>
       ))}
       <label class="nav-search" style="display:flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); border-radius:8px; padding:9px 16px;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8391a8" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
